@@ -1,0 +1,10 @@
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/repository/TrackingRepository.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/exception/HabitNotFoundException.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/controller/HabitTrackerController.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/repository/HabitRepository.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/model/Tracking.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/dto/request/HabitRequest.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/model/Habit.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/model/Frequency.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/Main.java
+/Users/jugu/Documents/Netlight/habit-tracker/src/main/java/org/netlight/habit_tracker/service/HabitService.java
