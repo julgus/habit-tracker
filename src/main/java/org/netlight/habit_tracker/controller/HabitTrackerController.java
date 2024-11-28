@@ -24,7 +24,7 @@ public class HabitTrackerController {
     }
 
     @GetMapping("/{id}")
-    public HabitResponse getHabitById(@PathVariable final UUID id) {
+    public HabitResponse getHabitById(@PathVariable("id") final UUID id) {
         return habitService.getHabitResponseById(id);
     }
 
@@ -34,24 +34,24 @@ public class HabitTrackerController {
     }
 
     @PatchMapping("/{id}")
-    public HabitResponse updateHabit(@PathVariable final UUID id,
+    public HabitResponse updateHabit(@PathVariable("id") final UUID id,
                              @RequestBody final HabitRequest habitRequest) {
         return habitService.updateHabit(id, habitRequest);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteHabit(@PathVariable final UUID id) {
+    public void deleteHabit(@PathVariable("id") final UUID id) {
         habitService.deleteHabit(id);
     }
 
     @PostMapping("{habitId}/tracking")
-    public Tracking addTracking(@PathVariable final UUID habitId,
+    public Tracking addTracking(@PathVariable("habitId") final UUID habitId,
                                 @RequestBody final String note) {
         return habitService.addTrackingEntry(habitId, note);
     }
 
     @GetMapping("{habitId}/tracking")
-    public List<Tracking> getTrackings(@PathVariable final UUID habitId) {
+    public List<Tracking> getTrackings(@PathVariable("habitId") final UUID habitId) {
         return habitService.getAllTrackingsForHabit(habitId);
     }
 

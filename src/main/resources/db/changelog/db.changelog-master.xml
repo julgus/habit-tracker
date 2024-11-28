@@ -5,7 +5,7 @@
 
     <changeSet id="1" author="netlight">
         <createTable tableName="habits">
-            <column name="id" type="UUID" autoIncrement="false">
+            <column name="id" type="BINARY(16)" autoIncrement="false">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)">
@@ -23,10 +23,10 @@
 
     <changeSet id="2" author="netlight">
         <createTable tableName="trackings">
-            <column name="id" type="UUID">
+            <column name="id" type="BINARY(16)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="habit_id" type="UUID">
+            <column name="habit_id" type="BINARY(16)">
                 <constraints nullable="false" foreignKeyName="fk_habit_tracking"
                              references="habits(id)"/>
             </column>

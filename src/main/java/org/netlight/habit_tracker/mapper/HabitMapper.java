@@ -12,11 +12,11 @@ public final class HabitMapper {
 
     public static HabitResponse mapToHabitResponse(final Habit habit) {
         return HabitResponse.builder()
-            .id(habit.id())
-            .name(habit.name())
-            .description(habit.description())
-            .frequency(habit.frequency())
-            .startDate(habit.startDate())
+            .id(habit.getId())
+            .name(habit.getName())
+            .description(habit.getDescription())
+            .frequency(habit.getFrequency())
+            .startDate(habit.getStartDate())
             .build();
     }
 

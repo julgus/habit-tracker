@@ -41,7 +41,6 @@ public class HabitService {
 
     public HabitResponse createHabit(final HabitRequest habitRequest) {
 
-        // Create a new Habit record with updated fields, using existing data if updates are absent
         final Habit habit = Habit.builder()
             .name(habitRequest.name())
             .description(habitRequest.description())
@@ -64,19 +63,19 @@ public class HabitService {
 
         // Create a new Habit record with updated fields, using existing data if updates are absent
         Habit updatedHabit = Habit.builder()
-            .id(existingHabit.id())
+            .id(existingHabit.getId())
             .name(habitRequest.name() != null
                 ? habitRequest.name()
-                : existingHabit.name())
+                : existingHabit.getName())
             .description(habitRequest.description() != null
                 ? habitRequest.description()
-                : existingHabit.description())
+                : existingHabit.getDescription())
             .frequency(habitRequest.frequency() != null
                 ? habitRequest.frequency()
-                : existingHabit.frequency())
+                : existingHabit.getFrequency())
             .startDate(habitRequest.startDate() != null
                 ? habitRequest.startDate()
-                : existingHabit.startDate())
+                : existingHabit.getStartDate())
             .build();
 
         return HabitMapper.mapToHabitResponse(habitRepository.save(updatedHabit));
