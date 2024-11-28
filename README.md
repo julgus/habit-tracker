@@ -179,5 +179,154 @@ This Habit Tracker API provides several endpoints to manage habits and track pro
     - `habitId`: The unique identifier of the habit (UUID).
 - **Response**: A JSON array of tracking objects.
 
+## Example Usage
+Below are some examples of how to interact with the Habit Tracker API using `curl` and JSON. These examples cover common operations such as creating a habit, retrieving habits, updating a habit, and adding tracking entries.
 
+### 1. Create a New Habit
 
+To create a new habit, send a `POST` request to `/api/habits` with the habit details in the request body.
+
+**Request:**
+```bash
+curl -X POST http://localhost:8080/api/habits \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Morning Exercise",
+  "description": "A daily workout routine",
+  "frequency": "DAILY",
+  "startDate": "2024-01-01"
+}'
+```
+
+**Response:**
+```json
+{
+  "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+  "name": "Morning Exercise",
+  "description": "A daily workout routine",
+  "frequency": "DAILY",
+  "startDate": "2024-01-01"
+}
+```
+
+### 2. Get All Habits
+To retrieve all habits, send a GET request to /api/habits.
+
+**Request:**
+```bash
+curl http://localhost:8080/api/habits
+```
+**Response:**
+```json
+[
+  {
+    "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+    "name": "Morning Exercise",
+    "description": "A daily workout routine",
+    "frequency": "DAILY",
+    "startDate": "2024-01-01"
+  }
+]
+```
+
+### 3.Get Habit by ID
+To retrieve a specific habit by its ID, send a GET request to /api/habits/{id}.
+
+**Request:**
+```bash
+curl http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09
+```
+**Response:**
+```json
+{
+  "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+  "name": "Morning Exercise",
+  "description": "A daily workout routine",
+  "frequency": "DAILY",
+  "startDate": "2024-01-01"
+}
+```
+
+### 4. Update a Habit
+To update an existing habit, send a PATCH request to /api/habits/{id} with the updated habit details in the request body.
+
+**Request:**
+```bash
+curl -X PATCH http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09 \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Morning Exercise",
+  "description": "A daily cardio and strength workout",
+  "frequency": "DAILY",
+  "startDate": "2024-01-01"
+}'
+```
+**Response:**
+```json
+{
+  "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+  "name": "Morning Exercise",
+  "description": "A daily cardio and strength workout",
+  "frequency": "DAILY",
+  "startDate": "2024-01-01"
+}
+```
+
+### 5. Delete a Habit
+To delete a habit, send a DELETE request to /api/habits/{id}.
+
+**Request:**
+```bash
+curl -X DELETE http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09
+```
+Response: Status code: 204 No Content (indicating that the habit was successfully deleted).
+
+### 6. Add a Tracking Entry
+To add a tracking entry to a habit, send a POST request to /api/habits/{habitId}/tracking with a note in the request body.
+
+**Request:**
+```bash
+curl -X POST http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09/tracking \
+-H "Content-Type: application/json" \
+-d '"Completed 30 minutes of cardio workout"'
+```
+**Response:**
+```json
+{
+  "id": "b9d90a5c-462d-4c07-ae1f-85b705b5f1e7",
+  "habit": {
+    "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+    "name": "Morning Exercise",
+    "description": "A daily cardio and strength workout",
+    "frequency": "DAILY",
+    "startDate": "2024-01-01"
+  },
+  "timestamp": "2024-01-01T08:30:00",
+  "note": "Completed 30 minutes of cardio workout"
+}
+```
+
+## 7. Get Tracking Entries for Habit
+To retrieve tracking entries for a specific habit, send a GET request to /api/habits/{habitId}/tracking.
+
+**Request:**
+```bash
+curl http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09/tracking
+```
+**Response:**
+```json
+[
+  {
+    "id": "b9d90a5c-462d-4c07-ae1f-85b705b5f1e7",
+    "habit": {
+      "id": "a74fba36-951b-4e2d-b4db-10a6c3922f09",
+      "name": "Morning Exercise",
+      "description": "A daily cardio and strength workout",
+      "frequency": "DAILY",
+      "startDate": "2024-01-01"
+    },
+    "timestamp": "2024-01-01T08:30:00",
+    "note": "Completed 30 minutes of cardio workout"
+  }
+]
+```
