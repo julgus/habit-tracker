@@ -2,21 +2,6 @@
 This project is an example solution for the Habit Tracker API assignment, which tasks participants in Netlight's Tech Avenue with designing and implementing a fully functional backend service. 
 The API is built with Spring Boot, uses Liquibase for database migrations, and relies on a MariaDB test container for storage. It allows users to track habits, log progress, and gain insights into behavioral patterns, helping to establish goals and enhance productivity.
 
-## Table of Contents
-
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Technologies Used](#technologies-used)
-- [Setup and Installation](#setup-and-installation)
-- [Database Migrations with Liquibase](#database-migrations-with-liquibase)
-- [Running the Application](#running-the-application)
-- [API Endpoints](#api-endpoints)
-- [Example Usage](#example-usage)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
-- [Contributors](#contributors)
-
-
 ## Tech Stack
 This project leverages the following technologies to deliver a robust and scalable habit-tracking API:
 
