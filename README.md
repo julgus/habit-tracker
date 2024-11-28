@@ -291,7 +291,7 @@ curl -X POST http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f
 }
 ```
 
-## 7. Get Tracking Entries for Habit
+### 7. Get Tracking Entries for Habit
 To retrieve tracking entries for a specific habit, send a GET request to /api/habits/{habitId}/tracking.
 
 **Request:**
