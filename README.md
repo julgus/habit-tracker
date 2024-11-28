@@ -5,12 +5,12 @@ The API is built with Spring Boot, uses Liquibase for database migrations, and r
 ## Tech Stack
 This project leverages the following technologies to deliver a robust and scalable habit-tracking API:
 
-- Spring Boot: Provides a streamlined framework for building the RESTful API with minimal configuration.
-- Liquibase: Handles database versioning and migrations, ensuring consistency across environments.
-- MariaDB: A reliable and high-performance database for storing habit and tracking data.
-- JUnit 5 & Mockito: Used for unit and integration testing to ensure application reliability.
-- Docker: Runs the database in an isolated containerized environment.
-- Java 17
+- **Spring Boot:** Provides a streamlined framework for building the RESTful API with minimal configuration.
+- **Liquibase:** Handles database versioning and migrations, ensuring consistency across environments.
+- **MariaDB:** A reliable and high-performance database for storing habit and tracking data.
+- **JUnit 5 & Mockito:** Used for unit and integration testing to ensure application reliability.
+- **Docker:** Runs the database in an isolated containerized environment.
+- **Java 17**
 
 ## Project Structure
 The project follows a clean, modular structure adhering to industry best practices for Spring Boot applications. Below is an overview of the key directories and files:
