@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "org.netlight.habit_tracker")  // Add your package here
+@EntityScan(basePackages = "org.netlight.habit_tracker")
 public class HabitTrackerApplication {
 
     public static void main(String[] args) {

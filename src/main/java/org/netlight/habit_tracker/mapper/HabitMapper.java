@@ -5,9 +5,6 @@ import org.netlight.habit_tracker.model.Habit;
 
 public final class HabitMapper {
 
-    /**
-     * Private constructor to prevent initialization
-     */
     private HabitMapper() {}
 
     public static HabitResponse mapToHabitResponse(final Habit habit) {
