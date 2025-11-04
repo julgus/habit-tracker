@@ -1,6 +1,5 @@
 package org.netlight.habit_tracker.service;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -212,4 +211,5 @@ class HabitServiceTest {
 
         verify(trackingRepository, times(1)).findByHabitId(habitId);
     }
+
 }

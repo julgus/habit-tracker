@@ -25,7 +25,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "trackings")
+// @Table(name = "trackings") TODO: Create this database-table in /resources/db.changelog-master.xml
 public class Tracking {
 
     @Id
@@ -42,7 +42,6 @@ public class Tracking {
     @Column(length = 500)
     private String note;
 
-    // Optional: Override equals and hashCode to avoid issues with proxies
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,9 +1,8 @@
 package org.netlight.habit_tracker.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.netlight.habit_tracker.dto.request.HabitRequest;
 import org.netlight.habit_tracker.dto.response.HabitResponse;
-import org.netlight.habit_tracker.model.Habit;
-import org.netlight.habit_tracker.model.Tracking;
 import org.netlight.habit_tracker.service.HabitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * The controller defines the API endpoints available to the client
+ */
+@Log4j2
 @RestController
 @RequestMapping("/api/habits")
 public class HabitTrackerController {
@@ -20,39 +23,28 @@ public class HabitTrackerController {
 
     @GetMapping
     public List<HabitResponse> getAllHabits() {
+        log.info("Fetching all habits");
         return habitService.getAllHabits();
-    }
-
-    @GetMapping("/{id}")
-    public HabitResponse getHabitById(@PathVariable("id") final UUID id) {
-        return habitService.getHabitResponseById(id);
     }
 
     @PostMapping
     public HabitResponse addHabit(@RequestBody final HabitRequest habitRequest) {
+        System.out.println("Adding habit");
         return habitService.createHabit(habitRequest);
     }
 
-    @PatchMapping("/{id}")
-    public HabitResponse updateHabit(@PathVariable("id") final UUID id,
-                             @RequestBody final HabitRequest habitRequest) {
-        return habitService.updateHabit(id, habitRequest);
+    @GetMapping("/{id}")
+    public HabitResponse getHabitById(@PathVariable("id") final UUID id) {
+        System.out.println("Get habit by id");
+        return habitService.getHabitResponseById(id);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteHabit(@PathVariable("id") final UUID id) {
-        habitService.deleteHabit(id);
-    }
+    // TODO: Add endpoint PATCH /habits/{id}: Update information for a specific habit.
 
-    @PostMapping("{habitId}/tracking")
-    public Tracking addTracking(@PathVariable("habitId") final UUID habitId,
-                                @RequestBody final String note) {
-        return habitService.addTrackingEntry(habitId, note);
-    }
+    // TODO: Add endpoint DELETE /habits/{id}: Delete a specific habit.
 
-    @GetMapping("{habitId}/tracking")
-    public List<Tracking> getTrackings(@PathVariable("habitId") final UUID habitId) {
-        return habitService.getAllTrackingsForHabit(habitId);
-    }
+    // TODO: Add endpoint POST /habits/{id}/tracking: Add a new tracking for a specific habit.
+
+    // TODO: Add endpoint GET /habits/{id}/tracking: Retrieve all trackings for a specific habit.
 
 }

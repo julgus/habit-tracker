@@ -1,53 +1,107 @@
 # Habit Tracker API
-This project is an example solution for the Habit Tracker API assignment, which tasks participants in Netlight's Tech Avenue with designing and implementing a fully functional backend service. 
-The API is built with Spring Boot, uses Liquibase for database migrations, and relies on a MariaDB test container for storage. It allows users to track habits, log progress, and gain insights into behavioral patterns, helping to establish goals and enhance productivity.
+This project is a starter template for Netlight's Tech Avenue code assignment.
+The task is to implement a Habit Tracker API that allows users to track their habits.
+Here you'll find the [Original Assignment Description](https://netlight365beta-my.sharepoint.com/:w:/g/personal/date_netlight_com/EZMW_aVHkzxBlVNb5VYWiPoBnv0MWJ_LeBBlG8IV6QrOZw?e=cnbNlH)
 
-## Tech Stack
-This project leverages the following technologies to deliver a robust and scalable habit-tracking API:
+## Project tech stack
+This application leverages the following technologies to deliver a robust and scalable Habit Tracking API:
 
-- **Spring Boot:** Provides a streamlined framework for building the RESTful API with minimal configuration.
-- **Liquibase:** Handles database versioning and migrations, ensuring consistency across environments.
-- **MariaDB:** A reliable and high-performance database for storing habit and tracking data.
-- **JUnit 5 & Mockito:** Used for unit and integration testing to ensure application reliability.
-- **Docker:** Runs the database in an isolated containerized environment.
-- **Java 17**
+- **Java 17:** The programming language used
+- **Spring Boot:** Handles web requests and makes it easy to create REST APIs.
+- **Liquibase:** Keeps track of the database structure and handles updates automatically.
+- **MariaDB:** Stores habits and tracking data.
+- **JUnit 5 & Mockito:** Lets us test the code to make sure everything works.
+- **Docker:** Runs MariaDB in a container, so we don’t have to install it manually.
 
-## Project Structure
-The project follows a clean, modular structure adhering to industry best practices for Spring Boot applications. Below is an overview of the key directories and files:
+The proposed tech stack reflects technologies commonly used by Netlight’s clients who build backend services in Java. However, it should not be seen as the only or recommended way to build a REST API.
+
+Different companies choose their technology stacks based on many factors, such as:
+
+- The existing skills and experience of their engineering teams 
+- The specific use cases or business requirements 
+- The cost and licensing of tools and platforms 
+- Performance and reliability needs 
+- Scalability and long-term maintenance considerations
+- etc.
+
+In other words, there’s no “one-size-fits-all” solution — the best technology stack depends on the specific context, goals, and constraints of each project.
+
+You are therefore encouraged to use any stack you feel most comfortable with, or one you’d like to explore and learn.
+
+If you choose to work with a different stack, you can still use this repository as a source of inspiration or reference for your implementation.
+## Project structure
+Here’s an overview of the files and folders that make up this application:
 
 ```plaintext
 habit-tracker/
 ├── src/main/java/com/example/habittracker/
 │   ├── controller/            # REST Controllers for API Endpoints
-│   ├── model/                 # Entities (Habit, Tracking)
+│   ├── model/                 # Database entities (Habit, Tracking)
 │   ├── exception/             # Custom exceptions
 │   ├── mapper/                # Mappings for habit responses
 │   ├── dto/                   # Data Transfer objects
 │        ├── request/          # Request objects
 │        ├── response/         # Response objects
-│   ├── repository/            # JPA Repositories 
+│   ├── repository/            # JPA Repositories for interacting with the database
 │   ├── service/               # Service layer with business logic
 │   └── HabitTrackerApplication.java  # Main Spring Boot application
 ├── src/main/resources/
 │   ├── application.yml        # Configuration for database, server, etc.
-│   ├── db/changelog/          # Liquibase migrations, defines DB schema
+│   ├── db/changelog/          # Liquibase migrations, defines database schema
 │   └── db.changelog-master.xml # Liquibase master changelog
 ├── docker-compose.yml         # Docker configuration for MariaDB
 └── README.md                  # Project documentation
 ```
 
-## Running the database in Docker 
-To set up and run the MariaDB database required for this project using Docker, follow these steps:
+## Getting started
+Your goal is to implement the REST API by completing the `HabitTrackerController` and its underlying service, `HabitTrackerService`.
 
-### 1. Ensure Docker is installed
-Make sure Docker is installed and running on your system. You can download Docker from the official site.
+__To help you get started, the endpoints for creating a new habit and fetching all habits are already implemented.__
 
-### 2. Pull the MariaDB Docker Image
-Use the following command to start the MariaDB container using Docker Compose: 
+### Suggested workflow
+
+1. **Explore the Project Files**  
+   - Familiarize yourself with the key files:
+     - `HabitTrackerController`
+     - `HabitTrackerService`
+   - Keep an eye out for the keyword "TODO" in all files, as it will hightlight sections that are not yet completed
+2. **Run the Application**  
+   Follow the instructions under **Run the Application** to start the server.
+
+3. **Access the API Documentation**  
+   Once the application is running, visit: http://localhost:8080/swagger-ui/index.html. This will display all available endpoints and allow you to interact with the API directly.
+
+4. **Test Existing Endpoints**  
+    Try out the endpoints that are already implemented for you:
+- **Add a habit:** Use [`POST /api/habits`](http://localhost:8080/swagger-ui/index.html#/habit-tracker-controller/addHabit) to create a new habit in the database.
+- **Fetch all habits:** Use [`GET /api/habits`](http://localhost:8080/swagger-ui/index.html#/habit-tracker-controller/getAllHabits) to retrieve all habits stored in the database.
+
+5. **Implement Missing Endpoints**
+Complete the TODOs in `HabitTrackerController` and the other files to implement the remaining functionality of the API.
+
+6. **Run Tests Continuously**  
+Use the provided test files (located in `src/test`) to verify your implementation. Running tests frequently will help ensure that the application behaves as expected as you add new features.
+The tests are automatically run when you build the project using: 
+
+   ```text
+   mvn test
+   ```
+   
+## Running the application 
+To run the application, you must ensure the following prerequisites are met on your local computer:
+
+- Java Development Kit (JDK): Install JDK 17 or later. You can download it from AdoptOpenJDK.
+- Maven: Ensure Maven is installed and available in your system's PATH. You can download it from [Apache Maven](https://maven.apache.org/download.cgi).
+- Ensure the MariaDB database is running. (Refer to the Running the Database in Docker section for instructions)
+
+### Running the database in Docker 
+Running your application requires that you have started the database. We've prepared a MariaDB setup with Docker.
+To start the database with Docker, you simply use the following command to start the MariaDB container using Docker Compose: 
 
 ```java
 docker compose up -d 
 ```
+
 The first time you start the database, Docker will automatically download all the required MariaDB files and then start the application.
 If all works as intended, you should end up seeing the following message: 
 
@@ -57,119 +111,34 @@ If all works as intended, you should end up seeing the following message:
  ✔ Container habit-tracker-mariadb-1  Started  
 ```
 
-## Running the application 
-To run the Habit Tracker API locally, follow these steps:
+If you get the error below, you need to start your Docker deamon, e.g. by running the desktop application. 
+```text
+Cannot connect to the Docker daemon at unix:///Users/jugu/.docker/run/docker.sock. Is the docker daemon running?
+```
 
-### 1. Ensure Prerequisites are Installed
-- Java Development Kit (JDK): Install JDK 17 or later. You can download it from AdoptOpenJDK.
-- Maven: Ensure Maven is installed and available in your system's PATH. You can download it from Apache Maven.
-- Ensure the MariaDB database is running. (Refer to the Running the Database in Docker section for instructions.)
-
-### 2. Build the Project
-First use Maven to build the project:
+### Run the application 
+Once the database is started you can go ahead and build and run the application using: 
 
 ```text
 mvn clean install
 ```
 
-### 3. Run the Application 
-Start the application using the following command:
+And then run the application using: 
 
 ```text
 mvn spring-boot:run -DskipTests
 ```
 
-### 4. Access the API
-Once the application starts, it will be available at http://localhost:8080. You can interact with the API through tools like Postman, curl, or directly through a frontend application.
+### Access the API
+Once the application starts, it will be available at http://localhost:8080/. 
+You can interact with the API through tools like curl, or directly through the graphical Swagger API: http://localhost:8080/swagger-ui/index.html. 
 
-### 5. Verify the Application is Running
-Visit http://localhost:8080/actuator/health in your browser or API client to check the application's health status. 
-A response like {"status":"UP"} indicates the application is running successfully.
-
-## Available Endpoints
-
-This Habit Tracker API provides several endpoints to manage habits and track progress. Below is a list of all available endpoints, their HTTP methods, and descriptions:
-
-### 1. **Get All Habits**
-- **URL**: `/api/habits`
-- **Method**: `GET`
-- **Description**: Retrieves a list of all habits.
-- **Response**: A JSON array of habit objects.
-
-### 2. **Get Habit by ID**
-- **URL**: `/api/habits/{id}`
-- **Method**: `GET`
-- **Description**: Retrieves a specific habit by its ID.
-- **Parameters**:
-    - `id`: The unique identifier of the habit (UUID).
-- **Response**: A JSON object representing the habit with the specified ID.
-
-### 3. **Create a New Habit**
-- **URL**: `/api/habits`
-- **Method**: `POST`
-- **Description**: Creates a new habit.
-- **Request Body**:
-    ```json
-    {
-      "name": "New Habit",
-      "description": "A new habit description",
-      "frequency": "DAILY",
-      "startDate": "2024-01-01"
-    }
-    ```
-- **Response**: The created habit object with a generated `id`.
-
-### 4. **Update an Existing Habit**
-- **URL**: `/api/habits/{id}`
-- **Method**: `PATCH`
-- **Description**: Updates an existing habit by its ID.
-- **Parameters**:
-    - `id`: The unique identifier of the habit (UUID).
-- **Request Body**:
-    ```json
-    {
-      "name": "Updated Habit",
-      "description": "Updated description",
-      "frequency": "WEEKLY",
-      "startDate": "2024-01-01"
-    }
-    ```
-- **Response**: The updated habit object.
-
-### 5. **Delete a Habit**
-- **URL**: `/api/habits/{id}`
-- **Method**: `DELETE`
-- **Description**: Deletes a habit by its ID.
-- **Parameters**:
-    - `id`: The unique identifier of the habit (UUID).
-- **Response**: No content (204 status) if successful.
-
-### 6. **Add Tracking Entry**
-- **URL**: `/api/habits/{habitId}/tracking`
-- **Method**: `POST`
-- **Description**: Adds a tracking entry for a specific habit.
-- **Parameters**:
-    - `habitId`: The ID of the habit to track (UUID).
-- **Request Body**:
-    ```json
-    "First tracking entry"
-    ```
-- **Response**: A JSON object representing the created tracking entry with a timestamp and note.
-
-### 7. **Get Trackings for a Habit**
-- **URL**: `/api/habits/{habitId}/tracking`
-- **Method**: `GET`
-- **Description**: Retrieves all tracking entries for a specific habit.
-- **Parameters**:
-    - `habitId`: The unique identifier of the habit (UUID).
-- **Response**: A JSON array of tracking objects.
-
-## Example Usage
-Below are some examples of how to interact with the Habit Tracker API using `curl` and JSON. These examples cover common operations such as creating a habit, retrieving habits, updating a habit, and adding tracking entries.
+## What to implement
+The Habit Tracker API is considered complete when the following endpoints are available as specified below.
+Remember that you can interact with the API using `curl` or [Swagger](http://localhost:8080/swagger-ui/index.html).
 
 ### 1. Create a New Habit
-
-To create a new habit, send a `POST` request to `/api/habits` with the habit details in the request body.
+Users should be allowed to create a new habit by sending a `POST` request to `/api/habits` with the habit details in the request body.
 
 **Request:**
 ```bash
@@ -195,7 +164,7 @@ curl -X POST http://localhost:8080/api/habits \
 ```
 
 ### 2. Get All Habits
-To retrieve all habits, send a GET request to /api/habits.
+All habits should be retrievable by sending a GET request to /api/habits.
 
 **Request:**
 ```bash
@@ -215,7 +184,7 @@ curl http://localhost:8080/api/habits
 ```
 
 ### 3.Get Habit by ID
-To retrieve a specific habit by its ID, send a GET request to /api/habits/{id}.
+You should allow users to fetch a specific habit by its ID by sending a GET request to /api/habits/{id}.
 
 **Request:**
 ```bash
@@ -233,7 +202,7 @@ curl http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f09
 ```
 
 ### 4. Update a Habit
-To update an existing habit, send a PATCH request to /api/habits/{id} with the updated habit details in the request body.
+You should be able to update a habit by sending a PATCH request to /api/habits/{id} with the updated habit details in the request body.
 
 **Request:**
 ```bash
@@ -258,7 +227,7 @@ curl -X PATCH http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922
 ```
 
 ### 5. Delete a Habit
-To delete a habit, send a DELETE request to /api/habits/{id}.
+User should be able to delete a habit by sending a DELETE request to /api/habits/{id}.
 
 **Request:**
 ```bash
@@ -267,7 +236,7 @@ curl -X DELETE http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c392
 Response: Status code: 204 No Content (indicating that the habit was successfully deleted).
 
 ### 6. Add a Tracking Entry
-To add a tracking entry to a habit, send a POST request to /api/habits/{habitId}/tracking with a note in the request body.
+It should be possible to add a tracking entry to a habit by sending a POST request to /api/habits/{habitId}/tracking with a note in the request body.
 
 **Request:**
 ```bash
@@ -292,7 +261,7 @@ curl -X POST http://localhost:8080/api/habits/a74fba36-951b-4e2d-b4db-10a6c3922f
 ```
 
 ### 7. Get Tracking Entries for Habit
-To retrieve tracking entries for a specific habit, send a GET request to /api/habits/{habitId}/tracking.
+Users should be able to retrieve tracking entries for a specific habit by sending a GET request to /api/habits/{habitId}/tracking.
 
 **Request:**
 ```bash

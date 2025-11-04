@@ -21,20 +21,12 @@
         </createTable>
     </changeSet>
 
+<!-- TODO: Uncomment this changeset and create a database table for the tracking entries
     <changeSet id="2" author="netlight">
         <createTable tableName="trackings">
-            <column name="id" type="BINARY(16)">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="habit_id" type="BINARY(16)">
-                <constraints nullable="false" foreignKeyName="fk_habit_tracking"
-                             references="habits(id)"/>
-            </column>
-            <column name="timestamp" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
-                <constraints nullable="false"/>
-            </column>
-            <column name="note" type="VARCHAR(255)"/>
+
         </createTable>
     </changeSet>
+-->
 
 </databaseChangeLog>
